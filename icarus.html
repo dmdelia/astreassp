@@ -28,7 +28,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Parallax & Ease Lift effect */
         section {
             min-height: 100vh;
             width: 100vw;
@@ -58,7 +57,6 @@
             max-width: 900px;
         }
 
-        /* JS Lift Animation Classes */
         .lift-element {
             opacity: 0;
             transform: translateY(60px);
@@ -127,6 +125,47 @@
         .highlight-cyan { color: var(--electric-cyan); }
         .highlight-green { color: var(--bio-green); }
 
+        .icarus-vertical-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 40px;
+            align-items: center;
+            margin: 40px 0;
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 4px solid var(--electric-cyan);
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .vertical-word {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 12px;
+            color: var(--electric-cyan);
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .acronym-list {
+            list-style: none;
+            margin: 0;
+        }
+
+        .acronym-list li {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            color: var(--steel-gray);
+        }
+
+        .acronym-list li strong {
+            color: var(--titan-white);
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+        }
+
         .btn-group {
             display: flex;
             gap: 20px;
@@ -174,7 +213,6 @@
             transform: translateY(4px);
         }
 
-        /* Navbar */
         nav {
             position: fixed;
             top: 0;
@@ -218,9 +256,9 @@
             color: var(--electric-cyan);
         }
 
-        /* 4K Open Source NASA Backgrounds */
         #hero { background-image: url('https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?q=80&w=3840&auto=format&fit=crop'); }
-        #avionics { background-image: url('https://images.unsplash.com/photo-1517976487492-5750f3195933?q=80&w=3840&auto=format&fit=crop'); }
+        #meet-icarus { background-image: url('https://images.unsplash.com/photo-1517976487492-5750f3195933?q=80&w=3840&auto=format&fit=crop'); }
+        #avionics { background-image: url('https://images.unsplash.com/photo-1506443432602-ac2fcd6f54e0?q=80&w=3840&auto=format&fit=crop'); }
         #payloads { background-image: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=3840&auto=format&fit=crop'); }
         #manifest { background-image: url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?q=80&w=3840&auto=format&fit=crop'); }
         
@@ -231,6 +269,8 @@
             nav { padding: 20px 5vw; }
             .nav-links { display: none; }
             section { background-attachment: scroll; }
+            .icarus-vertical-grid { grid-template-columns: 1fr; gap: 20px; }
+            .vertical-word { writing-mode: horizontal-tb; font-size: 2.5rem; letter-spacing: 6px; }
         }
     </style>
 </head>
@@ -244,19 +284,40 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
     <section id="hero">
         <div class="content">
             <h1 class="lift-element">Mission ICARUS-RLV</h1>
             <p class="lift-element delay-1">An autonomous Balloon-Launched Reentry Vehicle (BLARV). Engineered to test deterministic C++/FreeRTOS flight software on dual-core ESP32 microcontrollers, executing precision Guidance, Navigation, and Control (GNC) algorithms in the stratosphere.</p>
             <div class="btn-group lift-element delay-2">
-                <a href="#avionics" class="btn btn-scroll">↓ Hardware Architecture</a>
+                <a href="#meet-icarus" class="btn btn-scroll">↓ Meet ICARUS</a>
                 <a href="index.html" class="btn btn-page">Astrea SSP Home</a>
             </div>
         </div>
     </section>
 
-    <!-- AVIONICS & GNC SECTION -->
+    <section id="meet-icarus">
+        <div class="content">
+            <h2 class="lift-element">System Architecture</h2>
+            <p class="lift-element delay-1">Engineered from the ground up for high-reliability stratospheric and atmospheric execution.</p>
+            
+            <div class="icarus-vertical-grid lift-element delay-2">
+                <div class="vertical-word">ICARUS</div>
+                <ul class="acronym-list">
+                    <li><strong>I</strong> — Integrated</li>
+                    <li><strong>C</strong> — Control &amp;</li>
+                    <li><strong>A</strong> — Autonomous</li>
+                    <li><strong>R</strong> — Reusable</li>
+                    <li><strong>U</strong> — Unmanned</li>
+                    <li><strong>S</strong> — System</li>
+                </ul>
+            </div>
+
+            <div class="btn-group lift-element delay-3">
+                <a href="#avionics" class="btn btn-scroll">↓ Avionics &amp; GNC</a>
+            </div>
+        </div>
+    </section>
+
     <section id="avionics">
         <div class="content">
             <h2 class="lift-element">AVIONICS & GNC</h2>
@@ -281,7 +342,6 @@
         </div>
     </section>
 
-    <!-- SCIENTIFIC PAYLOADS SECTION -->
     <section id="payloads">
         <div class="content">
             <h2 class="lift-element">SCIENTIFIC PAYLOADS</h2>
@@ -299,7 +359,6 @@
         </div>
     </section>
 
-    <!-- FLIGHT MANIFEST SECTION -->
     <section id="manifest">
         <div class="content">
             <h2 class="lift-element">FLIGHT MANIFEST</h2>
@@ -319,7 +378,6 @@
     </section>
 
     <script>
-        // Navbar styling on scroll
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -329,7 +387,6 @@
             }
         });
 
-        // Intersection Observer for the subtle "Lift" ease-in effect
         const observerOptions = {
             root: null,
             rootMargin: '0px',
