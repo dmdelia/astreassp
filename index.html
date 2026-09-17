@@ -7,9 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --space-black: #05070A;
+            --space-black: #0B0E14;
             --electric-cyan: #00E5FF;
-            --titan-white: #F0F6FC;
+            --titan-white: #FFFFFF;
         }
 
         * {
@@ -26,7 +26,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Scroll Snapping for Full-Page Sections */
         .scroll-container {
             height: 100vh;
             overflow-y: scroll;
@@ -39,53 +38,50 @@
             scroll-snap-align: start;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            padding-bottom: 10vh;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 10vw;
             position: relative;
             background-size: cover;
             background-position: center;
             border-bottom: 1px solid #1E2638;
         }
 
-        /* Dark Overlay for Readability */
         section::before {
             content: "";
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to top, rgba(5,7,10,0.9) 0%, rgba(5,7,10,0.2) 100%);
+            background: linear-gradient(to right, rgba(11,14,20,0.9) 0%, rgba(11,14,20,0.3) 100%);
             z-index: 1;
         }
 
         .content {
             position: relative;
             z-index: 2;
-            text-align: center;
-            max-width: 800px;
-            padding: 0 20px;
-            animation: fadeIn 2s ease-in-out;
+            max-width: 700px;
+            animation: fadeIn 1.5s ease-in-out;
         }
 
         h1, h2 {
             text-transform: uppercase;
-            letter-spacing: 8px;
+            letter-spacing: 6px;
             font-weight: 900;
         }
 
         h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
+            font-size: 4rem;
+            margin-bottom: 20px;
         }
 
         h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+            font-size: 3rem;
+            margin-bottom: 20px;
         }
 
         p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             line-height: 1.6;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             color: #8A99AD;
             font-weight: 300;
         }
@@ -107,7 +103,6 @@
         .btn:hover {
             background-color: var(--titan-white);
             color: var(--space-black);
-            border-color: var(--titan-white);
         }
 
         .btn-cyan {
@@ -118,21 +113,17 @@
         .btn-cyan:hover {
             background-color: var(--electric-cyan);
             color: var(--space-black);
-            border-color: var(--electric-cyan);
         }
 
-        /* Navbar */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 20px 50px;
+            padding: 30px 5vw;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            background: rgba(5, 7, 10, 0.8);
-            backdrop-filter: blur(10px);
         }
 
         .logo {
@@ -158,11 +149,10 @@
             color: var(--electric-cyan);
         }
 
-        /* Specific Section Backgrounds (Placeholders - replace with your own images) */
-        #hero { background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop'); }
-        #icarus { background-image: url('https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?q=80&w=2070&auto=format&fit=crop'); }
-        #joanus { background-image: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2011&auto=format&fit=crop'); }
-        #manifest { background-image: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2072&auto=format&fit=crop'); }
+        /* Subtle background gradients simulating space/atmosphere */
+        #hero { background: radial-gradient(circle at right, #1A2332 0%, #0B0E14 100%); }
+        #icarus { background: radial-gradient(circle at bottom right, #1E2638 0%, #0B0E14 100%); }
+        #joanus { background: radial-gradient(circle at top right, #1A0033 0%, #0B0E14 100%); }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -177,7 +167,6 @@
         <div class="nav-links">
             <a href="#icarus">ICARUS-RLV</a>
             <a href="#joanus">JOANUS</a>
-            <a href="#manifest">MANIFEST</a>
         </div>
     </nav>
 
@@ -187,8 +176,8 @@
         <section id="hero">
             <div class="content">
                 <h1>ASTREA SOLO SPACE PROGRAM</h1>
-                <p>An independent aerospace initiative developing autonomous Stratospheric Reusable Launch Vehicles (ICARUS-RLV) and astrophysical data pipelines (Projekt JOANUS)[cite: 1].</p>
-                <a href="#icarus" class="btn">Explore Missions</a>
+                <p>An independent aerospace technology and data science research initiative[cite: 1]. Developing autonomous Stratospheric Reusable Launch Vehicles alongside advanced astrophysical data processing pipelines[cite: 1].</p>
+                <a href="#icarus" class="btn">View Architecture</a>
             </div>
         </section>
 
@@ -196,8 +185,8 @@
         <section id="icarus">
             <div class="content">
                 <h2>MISSION ICARUS-RLV</h2>
-                <p>A Balloon-Launched Reentry Vehicle (BLARV) testing C++/FreeRTOS flight software on ESP32[cite: 1]. Featuring active aerodynamic control via Grid Fins and Cold-Gas RCS for autonomous Return-to-Launch-Site (RTLS) capability[cite: 1]. Scientific payloads include a Geiger-Müller counter for cosmic radiation at the Pfotzer-Maximum and dry yeast astrobiology stress tests[cite: 1].</p>
-                <a href="#manifest" class="btn btn-cyan">View Flight Manifest</a>
+                <p>An autonomous Balloon-Launched Reentry Vehicle (BLARV) powered by deterministic C++/FreeRTOS multi-tasking on dual-core ESP32 microcontrollers[cite: 1]. Featuring active aerodynamic grid fin control, Kaltgas-RCS attitude adjustment, and Return-To-Launch-Site (RTLS) capabilities[cite: 1]. Payloads include radiation profiling at the Pfotzer-Maximum and dry yeast astrobiology exposure[cite: 1].</p>
+                <a href="https://github.com/yourusername/icarus_rlv" class="btn btn-cyan">Explore Hardware</a>
             </div>
         </section>
 
@@ -205,19 +194,8 @@
         <section id="joanus">
             <div class="content">
                 <h2>PROJEKT JOANUS</h2>
-                <p>An autonomous Python data science pipeline designed to identify and verify exoplanet candidates from NASA space telescope archives[cite: 1]. Utilizing a Relativ-First metric (Rp/R*), Box Least Squares (BLS) periodograms, and a robust Odd/Even depth validation suite to eliminate false positives[cite: 1].</p>
-                <a href="https://github.com/yourusername/joanus" class="btn">View on GitHub</a>
-            </div>
-        </section>
-
-        <!-- FLIGHT MANIFEST SECTION -->
-        <section id="manifest">
-            <div class="content">
-                <h2>FLIGHT MANIFEST</h2>
-                <p><strong>M-1 to M-2:</strong> Sub-atmospheric local drop tests validating Grid Fin precision[cite: 1].<br>
-                <strong>M-3 to M-4:</strong> 35,000m stratospheric ascents capturing 4K optics, Pfotzer radiation, and astrobiological yeast exposure[cite: 1].<br>
-                <strong>M-5 (Titan Pinnacle):</strong> 40,000m near-space flagship mission testing vacuum cold-gas RCS and full RTLS[cite: 1].</p>
-                <a href="#" class="btn btn-cyan">Join The Mission</a>
+                <p>An autonomous Python data science pipeline designed to identify, extract, and validate exoplanet candidates from NASA space telescope archives (TESS, Kepler)[cite: 1]. Utilizing a Relativ-First metric, Box Least Squares (BLS) periodograms, and a robust False-Positive validation suite (Odd/Even transit depth checks)[cite: 1].</p>
+                <a href="https://github.com/yourusername/joanus" class="btn">View Data Pipeline</a>
             </div>
         </section>
 
