@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projekt JOANUS | Astrea SSP</title>
+    <title>Astrea Solo Space Program | Projekt JOANUS</title>
     
     <!-- KaTeX Integration -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
@@ -12,24 +12,210 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --space-black: #0B0E14; --electric-cyan: #00E5FF; --titan-white: #FFFFFF; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Space Grotesk', sans-serif; }
-        body { background-color: var(--space-black); color: var(--titan-white); overflow-x: hidden; }
-        nav { position: fixed; top: 0; width: 100%; padding: 30px 5vw; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: rgba(11, 14, 20, 0.8); backdrop-filter: blur(10px); }
-        .logo { font-weight: 900; font-size: 1.5rem; letter-spacing: 4px; color: var(--titan-white); text-decoration: none; }
-        .nav-links a { color: var(--titan-white); text-decoration: none; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; margin-left: 30px; font-weight: 700; transition: color 0.3s; }
-        .nav-links a:hover { color: var(--electric-cyan); }
+        :root {
+            --space-black: #05070A;
+            --electric-cyan: #00E5FF;
+            --titan-white: #FFFFFF;
+        }
 
-        section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 100px 10vw; background: radial-gradient(circle at top right, #1A0033 0%, #0B0E14 100%); }
-        .content { max-width: 800px; animation: fadeIn 1.5s ease-in-out; }
-        h1 { font-size: 3.5rem; text-transform: uppercase; letter-spacing: 6px; font-weight: 900; margin-bottom: 20px; color: var(--titan-white); }
-        h3 { font-size: 1.5rem; letter-spacing: 2px; margin-top: 30px; margin-bottom: 10px; color: var(--electric-cyan); }
-        p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px; color: #8A99AD; font-weight: 300; }
-        ul { margin-left: 20px; margin-bottom: 30px; color: #8A99AD; font-size: 1.1rem; line-height: 1.6; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        body {
+            background-color: var(--space-black);
+            color: var(--titan-white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Scroll Snapping */
+        .scroll-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
+
+        section {
+            height: 100vh;
+            width: 100vw;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 10vw;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        section::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to right, rgba(5,7,10,0.95) 0%, rgba(5,7,10,0.3) 100%);
+            z-index: 1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h1, h2 {
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            font-weight: 900;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        p, ul {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: #8A99AD;
+            font-weight: 300;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 40px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: var(--titan-white);
+            font-weight: 700;
+        }
+
+        .formula-container {
+            font-size: 2.5rem;
+            color: var(--titan-white);
+            margin: 40px 0;
+            padding: 20px;
+            border-left: 4px solid var(--electric-cyan);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(5px);
+            display: inline-block;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border: 2px solid var(--titan-white);
+            color: var(--titan-white);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: transparent;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn:hover {
+            background-color: var(--titan-white);
+            color: var(--space-black);
+        }
+
+        .btn-cyan {
+            border-color: var(--electric-cyan);
+            color: var(--electric-cyan);
+        }
+
+        .btn-cyan:hover {
+            background-color: var(--electric-cyan);
+            color: var(--space-black);
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(5, 7, 10, 0.7);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            color: var(--titan-white);
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: var(--titan-white);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            margin-left: 30px;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--electric-cyan);
+        }
+
+        /* 4K Open Source NASA Backgrounds */
+        #hero { background-image: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=3840&auto=format&fit=crop'); }
+        #architecture { background-image: url('https://images.unsplash.com/photo-1506443432602-ac2fcd6f54e0?q=80&w=3840&auto=format&fit=crop'); }
+        #metric { background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=3840&auto=format&fit=crop'); }
+        #validation { background-image: url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?q=80&w=3840&auto=format&fit=crop'); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.5rem; }
+            .btn-group { flex-direction: column; }
+            nav { padding: 20px 5vw; }
+            .nav-links { display: none; }
+            .formula-container { font-size: 1.8rem; }
+        }
     </style>
 </head>
 <body>
+
     <nav>
         <a href="index.html" class="logo">ASTREA SSP</a>
         <div class="nav-links">
@@ -38,33 +224,63 @@
         </div>
     </nav>
 
-    <section>
-        <div class="content">
-            <h1>Projekt JOANUS</h1>
-            <p>An autonomous Python data science pipeline designed to identify, extract, and validate exoplanet candidates from NASA space telescope archives (TESS, Kepler, and future Roman Space Telescope datasets).</p>
-            
-            <h3>Data Pipeline Architecture</h3>
-            <ul>
-                <li><strong>Signal Processing:</strong> Outlier removal, normalization, and Savitzky-Golay flattening of raw FITS lightcurves.</li>
-                <li><strong>Blind Search:</strong> Automated Box Least Squares (BLS) periodogram execution.</li>
-                <li><strong>Batch Automation:</strong> Multi-target headless processing exporting telemetry and physics data directly to JSON.</li>
-            </ul>
+    <div class="scroll-container">
+        
+        <!-- HERO SECTION -->
+        <section id="hero">
+            <div class="content">
+                <h1>PROJEKT JOANUS</h1>
+                <p>An autonomous Python data science suite designed to identify, extract, and validate exoplanet candidates from NASA space telescope archives (TESS, Kepler, Roman Space Telescope). Engineering automated discovery pipelines ahead of the 2027 data drop.</p>
+                <div class="btn-group">
+                    <a href="#architecture" class="btn btn-cyan">View Architecture</a>
+                </div>
+            </div>
+        </section>
 
-            <h3>Relativ-First Metric</h3>
-            <p>To analyze newly discovered stars lacking existing catalog metadata, the pipeline relies on the pure photometric radius ratio:</p>
-            <!-- Hier ist das korrekte KaTeX -->
-            <p style="font-size: 1.5rem; color: var(--titan-white); text-align: center; margin: 30px 0;">
-                \( \frac{R_p}{R_*} = \sqrt{\delta} \)
-            </p>
-            <p>This allows accurate physical characterization regardless of pre-existing stellar database entries.</p>
+        <!-- ARCHITECTURE SECTION -->
+        <section id="architecture">
+            <div class="content">
+                <h2>PIPELINE ARCHITECTURE</h2>
+                <p>Designed for multi-core headless batch processing, the pipeline executes rigorous signal ingestion and processing routines:</p>
+                <ul>
+                    <li><strong>Signal Processing:</strong> Outlier removal, normalization, and Savitzky-Golay flattening of raw FITS lightcurves to eliminate thermal drift and stellar variability.</li>
+                    <li><strong>Blind Search:</strong> Automated Box Least Squares (BLS) periodogram execution with dynamic period constraints to bypass low-frequency noise.</li>
+                    <li><strong>Batch & Persistence:</strong> Multi-target concurrent processing exporting physical telemetry directly to JSON databases.</li>
+                </ul>
+                <a href="#metric" class="btn">View Core Metric</a>
+            </div>
+        </section>
 
-            <h3>Validation Suite</h3>
-            <ul>
-                <li><strong>Odd/Even Depth Mismatch:</strong> Filters out eclipsing binaries masquerading as exoplanets.</li>
-                <li><strong>Secondary Eclipse Check:</strong> Analyzes phase ranges for false positive light dips.</li>
-                <li><strong>SNR Thresholding:</strong> Rejects background instrument noise automatically.</li>
-            </ul>
-        </div>
-    </section>
+        <!-- RELATIV-FIRST METRIC SECTION -->
+        <section id="metric">
+            <div class="content">
+                <h2>RELATIV-FIRST METRIC</h2>
+                <p>To analyze newly discovered stars lacking existing catalog metadata, JOANUS relies on the pure photometric radius ratio derived directly from the transit depth. This ensures robust characterization independent of existing astronomical databases.</p>
+                
+                <div class="formula-container">
+                    \( \frac{R_p}{R_*} = \sqrt{\delta} \)
+                </div>
+
+                <p>Where \( R_p \) is the planetary radius, \( R_* \) is the stellar radius, and \( \delta \) is the normalized transit depth.</p>
+                <a href="#validation" class="btn btn-cyan">View Validation Suite</a>
+            </div>
+        </section>
+
+        <!-- VALIDATION SUITE SECTION -->
+        <section id="validation">
+            <div class="content">
+                <h2>VALIDATION SUITE</h2>
+                <p>A multi-layered programmatic defense against false positives, isolating true exoplanetary transits from eclipsing binaries and instrument noise:</p>
+                <ul>
+                    <li><strong>Odd/Even Depth Mismatch:</strong> Filters out eclipsing binaries masquerading as exoplanets by ensuring alternating transits remain identical (&lt;15% deviation).</li>
+                    <li><strong>Secondary Eclipse Check:</strong> Analyzes Phase 0.5 for secondary light dips, flagging binary star systems.</li>
+                    <li><strong>SNR Thresholding:</strong> Automatically rejects candidate signals with a Signal-to-Noise Ratio below 5.0.</li>
+                </ul>
+                <a href="https://github.com" class="btn">View Source Code</a>
+            </div>
+        </section>
+
+    </div>
+
 </body>
 </html>
