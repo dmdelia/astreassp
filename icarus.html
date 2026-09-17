@@ -3,55 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ICARUS-RLV | Astrea SSP</title>
+    <title>Astrea Solo Space Program</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700;900&display=swap" rel="stylesheet">
     <style>
-        /* Gleiches CSS-Setup wie index.html für einheitliches Design */
-        :root { --space-black: #0B0E14; --electric-cyan: #00E5FF; --titan-white: #FFFFFF; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Space Grotesk', sans-serif; }
-        body { background-color: var(--space-black); color: var(--titan-white); overflow-x: hidden; }
-        nav { position: fixed; top: 0; width: 100%; padding: 30px 5vw; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: rgba(11, 14, 20, 0.8); backdrop-filter: blur(10px); }
-        .logo { font-weight: 900; font-size: 1.5rem; letter-spacing: 4px; color: var(--titan-white); text-decoration: none; }
-        .nav-links a { color: var(--titan-white); text-decoration: none; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; margin-left: 30px; font-weight: 700; transition: color 0.3s; }
-        .nav-links a:hover { color: var(--electric-cyan); }
+        :root {
+            --space-black: #05070A;
+            --electric-cyan: #00E5FF;
+            --titan-white: #FFFFFF;
+        }
 
-        section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 100px 10vw; background: radial-gradient(circle at bottom right, #1E2638 0%, #0B0E14 100%); }
-        .content { max-width: 800px; animation: fadeIn 1.5s ease-in-out; }
-        h1 { font-size: 3.5rem; text-transform: uppercase; letter-spacing: 6px; font-weight: 900; margin-bottom: 20px; color: var(--electric-cyan); }
-        h3 { font-size: 1.5rem; letter-spacing: 2px; margin-top: 30px; margin-bottom: 10px; }
-        p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px; color: #8A99AD; font-weight: 300; }
-        ul { margin-left: 20px; margin-bottom: 30px; color: #8A99AD; font-size: 1.1rem; line-height: 1.6; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        body {
+            background-color: var(--space-black);
+            color: var(--titan-white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Scroll Snapping */
+        .scroll-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
+
+        section {
+            height: 100vh;
+            width: 100vw;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 10vw;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        section::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to right, rgba(5,7,10,0.95) 0%, rgba(5,7,10,0.3) 100%);
+            z-index: 1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h1, h2 {
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            font-weight: 900;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: #8A99AD;
+            font-weight: 300;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border: 2px solid var(--titan-white);
+            color: var(--titan-white);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: transparent;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn:hover {
+            background-color: var(--titan-white);
+            color: var(--space-black);
+        }
+
+        .btn-cyan {
+            border-color: var(--electric-cyan);
+            color: var(--electric-cyan);
+        }
+
+        .btn-cyan:hover {
+            background-color: var(--electric-cyan);
+            color: var(--space-black);
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(5, 7, 10, 0.7);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            color: var(--titan-white);
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: var(--titan-white);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            margin-left: 30px;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--electric-cyan);
+        }
+
+        /* 4K Open Source NASA Backgrounds */
+        #hero { background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=3840&auto=format&fit=crop'); }
+        #icarus { background-image: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=3840&auto=format&fit=crop'); }
+        #joanus { background-image: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=3840&auto=format&fit=crop'); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.5rem; }
+            .btn-group { flex-direction: column; }
+            nav { padding: 20px 5vw; }
+            .nav-links { display: none; }
+        }
     </style>
 </head>
 <body>
+
     <nav>
         <a href="index.html" class="logo">ASTREA SSP</a>
         <div class="nav-links">
-            <a href="icarus.html" style="color: var(--electric-cyan);">ICARUS-RLV</a>
+            <a href="icarus.html">ICARUS-RLV</a>
             <a href="joanus.html">PROJEKT JOANUS</a>
         </div>
     </nav>
 
-    <section>
-        <div class="content">
-            <h1>Mission ICARUS-RLV</h1>
-            <p>An autonomous Balloon-Launched Reentry Vehicle (BLARV) powered by deterministic C++/FreeRTOS multi-tasking on dual-core ESP32 microcontrollers.</p>
-            
-            <h3>Avionics & GNC</h3>
-            <ul>
-                <li><strong>Flight Computer:</strong> ESP32 running FreeRTOS with strict task prioritization.</li>
-                <li><strong>Attitude Control:</strong> Cold-Gas RCS for anti-spin and vacuum stabilization at 40,000m.</li>
-                <li><strong>Aerodynamic Steering:</strong> 4x Active Servo Grid Fins for Return-To-Launch-Site (RTLS) precision landing.</li>
-            </ul>
+    <div class="scroll-container">
+        
+        <!-- HERO SECTION -->
+        <section id="hero">
+            <div class="content">
+                <h1>Astrea Solo Space Program</h1>
+                <p>An independent aerospace technology and data science research initiative. Engineering autonomous Stratospheric Reusable Launch Vehicles and advanced astrophysical processing pipelines.</p>
+                <div class="btn-group">
+                    <a href="icarus.html" class="btn">Hardware</a>
+                    <a href="joanus.html" class="btn">Data Science</a>
+                </div>
+            </div>
+        </section>
 
-            <h3>Scientific Payloads</h3>
-            <ul>
-                <li><strong>Radiation Profiling:</strong> Interrupt-based Geiger-Müller counter targeting the Pfotzer-Maximum.</li>
-                <li><strong>Astrobiology Stresstest:</strong> Servo-actuated sterile chamber exposing dry yeast to UV-C and near-vacuum.</li>
-                <li><strong>Imagery:</strong> Standalone 4K stratospheric camera triggered via GPIO.</li>
-            </ul>
-        </div>
-    </section>
+        <!-- ICARUS-RLV SECTION -->
+        <section id="icarus">
+            <div class="content">
+                <h2>MISSION ICARUS-RLV</h2>
+                <p>A Balloon-Launched Reentry Vehicle (BLARV) testing deterministic C++/FreeRTOS flight software on ESP32. Featuring active aerodynamic control via Grid Fins and Cold-Gas RCS for autonomous Return-to-Launch-Site (RTLS) capability. Science payloads target the Pfotzer-Maximum radiation profile and astrobiology exposure.</p>
+                <a href="icarus.html" class="btn btn-cyan">View Architecture</a>
+            </div>
+        </section>
+
+        <!-- JOANUS SECTION -->
+        <section id="joanus">
+            <div class="content">
+                <h2>PROJEKT JOANUS</h2>
+                <p>An autonomous Python data science pipeline designed to identify, extract, and validate exoplanet candidates from NASA space telescope archives. Utilizing a Relativ-First metric, Box Least Squares periodograms, and robust False-Positive validation suites.</p>
+                <a href="joanus.html" class="btn">View Data Pipeline</a>
+            </div>
+        </section>
+
+    </div>
+
 </body>
 </html>
