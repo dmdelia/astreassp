@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astrea Solo Space Program</title>
+    <title>ICARUS-RLV | Astrea Solo Space Program</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --space-black: #05070A;
             --electric-cyan: #00E5FF;
             --titan-white: #FFFFFF;
+            --steel-gray: #8A99AD;
+            --bio-green: #00FF88;
         }
 
         * {
@@ -26,42 +28,52 @@
             scroll-behavior: smooth;
         }
 
-        /* Scroll Snapping */
-        .scroll-container {
-            height: 100vh;
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory;
-        }
-
+        /* Parallax & Ease Lift effect */
         section {
-            height: 100vh;
+            min-height: 100vh;
             width: 100vw;
-            scroll-snap-align: start;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            padding: 0 10vw;
+            padding: 100px 10vw;
             position: relative;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            background-attachment: fixed; 
         }
 
         section::before {
             content: "";
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to right, rgba(5,7,10,0.95) 0%, rgba(5,7,10,0.3) 100%);
+            background: linear-gradient(to right, rgba(5,7,10,0.95) 0%, rgba(5,7,10,0.4) 100%);
             z-index: 1;
         }
 
         .content {
             position: relative;
             z-index: 2;
-            max-width: 800px;
-            animation: fadeIn 2s ease-in-out;
+            max-width: 900px;
         }
+
+        /* JS Lift Animation Classes */
+        .lift-element {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .lift-element.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
 
         h1, h2 {
             text-transform: uppercase;
@@ -73,6 +85,7 @@
             font-size: 4.5rem;
             margin-bottom: 20px;
             line-height: 1.1;
+            color: var(--electric-cyan);
         }
 
         h2 {
@@ -80,47 +93,85 @@
             margin-bottom: 20px;
         }
 
-        p {
+        h3 {
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: var(--titan-white);
+            text-transform: uppercase;
+        }
+
+        p, ul {
             font-size: 1.25rem;
             line-height: 1.6;
-            margin-bottom: 40px;
-            color: #8A99AD;
+            margin-bottom: 20px;
+            color: var(--steel-gray);
             font-weight: 300;
         }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 40px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: var(--titan-white);
+            font-weight: 700;
+        }
+
+        .highlight-cyan { color: var(--electric-cyan); }
+        .highlight-green { color: var(--bio-green); }
 
         .btn-group {
             display: flex;
             gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
         }
 
         .btn {
             display: inline-block;
             padding: 15px 40px;
-            border: 2px solid var(--titan-white);
-            color: var(--titan-white);
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 700;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
-            background: transparent;
             backdrop-filter: blur(5px);
         }
 
-        .btn:hover {
-            background-color: var(--titan-white);
-            color: var(--space-black);
-        }
-
-        .btn-cyan {
-            border-color: var(--electric-cyan);
+        .btn-page {
+            border: 2px solid var(--electric-cyan);
+            background: rgba(0, 229, 255, 0.05);
             color: var(--electric-cyan);
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.1);
         }
 
-        .btn-cyan:hover {
+        .btn-page:hover {
             background-color: var(--electric-cyan);
             color: var(--space-black);
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.5);
+            transform: translateY(-4px);
+        }
+
+        .btn-scroll {
+            border: 1px solid rgba(138, 153, 173, 0.4);
+            background: transparent;
+            color: var(--steel-gray);
+        }
+
+        .btn-scroll:hover {
+            border-color: var(--titan-white);
+            color: var(--titan-white);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(4px);
         }
 
         /* Navbar */
@@ -133,9 +184,15 @@
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            background: rgba(5, 7, 10, 0.7);
+            background: linear-gradient(to bottom, rgba(5, 7, 10, 0.9) 0%, rgba(5, 7, 10, 0) 100%);
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(5, 7, 10, 0.8);
             backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px 5vw;
         }
 
         .logo {
@@ -162,67 +219,135 @@
         }
 
         /* 4K Open Source NASA Backgrounds */
-        #hero { background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=3840&auto=format&fit=crop'); }
-        #icarus { background-image: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=3840&auto=format&fit=crop'); }
-        #joanus { background-image: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=3840&auto=format&fit=crop'); }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        #hero { background-image: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=3840&auto=format&fit=crop'); }
+        #avionics { background-image: url('https://images.unsplash.com/photo-1517976487492-5750f3195933?q=80&w=3840&auto=format&fit=crop'); }
+        #payloads { background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=3840&auto=format&fit=crop'); }
+        #manifest { background-image: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=3840&auto=format&fit=crop'); }
         
         @media (max-width: 768px) {
             h1 { font-size: 3rem; }
             h2 { font-size: 2.5rem; }
-            .btn-group { flex-direction: column; }
+            .btn-group { flex-direction: column; align-items: flex-start; }
             nav { padding: 20px 5vw; }
             .nav-links { display: none; }
+            section { background-attachment: scroll; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
+    <nav id="navbar">
         <a href="index.html" class="logo">ASTREA SSP</a>
         <div class="nav-links">
-            <a href="icarus.html">ICARUS-RLV</a>
+            <a href="icarus.html" style="color: var(--electric-cyan);">ICARUS-RLV</a>
             <a href="joanus.html">PROJEKT JOANUS</a>
         </div>
     </nav>
 
-    <div class="scroll-container">
-        
-        <!-- HERO SECTION -->
-        <section id="hero">
-            <div class="content">
-                <h1>Astrea Solo Space Program</h1>
-                <p>An independent aerospace technology and data science research initiative. Engineering autonomous Stratospheric Reusable Launch Vehicles and advanced astrophysical processing pipelines.</p>
-                <div class="btn-group">
-                    <a href="icarus.html" class="btn">Hardware</a>
-                    <a href="joanus.html" class="btn">Data Science</a>
-                </div>
+    <!-- HERO SECTION -->
+    <section id="hero">
+        <div class="content">
+            <h1 class="lift-element">Mission ICARUS-RLV</h1>
+            <p class="lift-element delay-1">An autonomous Balloon-Launched Reentry Vehicle (BLARV). Engineered to test deterministic C++/FreeRTOS flight software on dual-core ESP32 microcontrollers, executing precision Guidance, Navigation, and Control (GNC) algorithms in the stratosphere.</p>
+            <div class="btn-group lift-element delay-2">
+                <a href="#avionics" class="btn btn-scroll">↓ Hardware Architecture</a>
+                <a href="index.html" class="btn btn-page">Astrea SSP Home</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- ICARUS-RLV SECTION -->
-        <section id="icarus">
-            <div class="content">
-                <h2>MISSION ICARUS-RLV</h2>
-                <p>A Balloon-Launched Reentry Vehicle (BLARV) testing deterministic C++/FreeRTOS flight software on ESP32. Featuring active aerodynamic control via Grid Fins and Cold-Gas RCS for autonomous Return-to-Launch-Site (RTLS) capability. Science payloads target the Pfotzer-Maximum radiation profile and astrobiology exposure.</p>
-                <a href="icarus.html" class="btn btn-cyan">View Architecture</a>
+    <!-- AVIONICS & GNC SECTION -->
+    <section id="avionics">
+        <div class="content">
+            <h2 class="lift-element">AVIONICS & GNC</h2>
+            <p class="lift-element delay-1">Built on a strict FreeRTOS multitasking architecture, decoupling mission-critical telemetry, sensor fusion, and active aerodynamic control loops.</p>
+            
+            <h3 class="lift-element delay-1">Flight Computer</h3>
+            <ul class="lift-element delay-2">
+                <li><strong>ESP32 Microcontroller:</strong> Dual-core processing with strict task prioritization.</li>
+                <li><strong>Sensor Fusion:</strong> High-frequency 9-DOF IMU filtering combined with GPS integration for precise spatial orientation.</li>
+                <li><strong>LoRa Telemetry:</strong> 868 MHz live downlink for real-time tracking and state-machine verification.</li>
+            </ul>
+
+            <h3 class="lift-element delay-2">Active Control Systems</h3>
+            <ul class="lift-element delay-3">
+                <li><strong class="highlight-cyan">Cold-Gas RCS:</strong> Solenoid-actuated thrusters for anti-spin and attitude stabilization in near-vacuum environments (35,000m+).</li>
+                <li><strong class="highlight-cyan">Grid Fin Steering:</strong> 4x active servo-actuated aerodynamic grid fins enabling Return-To-Launch-Site (RTLS) precision gliding through the troposphere.</li>
+            </ul>
+
+            <div class="btn-group lift-element delay-4">
+                <a href="#payloads" class="btn btn-scroll">↓ Explore Payloads</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- JOANUS SECTION -->
-        <section id="joanus">
-            <div class="content">
-                <h2>PROJEKT JOANUS</h2>
-                <p>An autonomous Python data science pipeline designed to identify, extract, and validate exoplanet candidates from NASA space telescope archives. Utilizing a Relativ-First metric, Box Least Squares periodograms, and robust False-Positive validation suites.</p>
-                <a href="joanus.html" class="btn">View Data Pipeline</a>
+    <!-- SCIENTIFIC PAYLOADS SECTION -->
+    <section id="payloads">
+        <div class="content">
+            <h2 class="lift-element">SCIENTIFIC PAYLOADS</h2>
+            <p class="lift-element delay-1">Operating in the stratosphere demands hardware-in-the-loop validation for both physical phenomena and biological exposure.</p>
+            
+            <ul class="lift-element delay-2">
+                <li><strong>Radiation Profiling:</strong> Interrupt-based Geiger-Müller counter capturing cosmic secondary radiation profiles precisely at the Pfotzer-Maximum (15–20 km altitude).</li>
+                <li><strong class="highlight-green">Astrobiology Stress Test:</strong> A custom servo-actuated sterile chamber exposing dry yeast (<em>Saccharomyces cerevisiae</em>) to UV-C radiation, extreme cold, and near-vacuum, verified post-flight via CO₂ fermentation analysis.</li>
+                <li><strong>Decoupled Optics:</strong> Standalone 4K camera payload capturing the Earth's curvature and deep space, triggered dynamically via hardware GPIO handshake pulses from the On-Board Computer.</li>
+            </ul>
+            
+            <div class="btn-group lift-element delay-3">
+                <a href="#manifest" class="btn btn-scroll">↓ Flight Manifest</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </div>
+    <!-- FLIGHT MANIFEST SECTION -->
+    <section id="manifest">
+        <div class="content">
+            <h2 class="lift-element">FLIGHT MANIFEST</h2>
+            <p class="lift-element delay-1">Iterative, staged deployment minimizes risk while validating hardware from the ground up.</p>
+            
+            <ul class="lift-element delay-2">
+                <li><strong>Phase 1 (M-1 & M-2):</strong> Low-altitude multicopter drop tests (300-500m) validating mechanical cutdowns, parachute state-machines, and active Grid Fin PID control for precision landing.</li>
+                <li><strong>Phase 2 (M-3 & M-4):</strong> 1,600g stratospheric envelope flights (~35,000m). Full scientific deployment targeting the Pfotzer radiation curve and astrobiological yeast exposure.</li>
+                <li><strong class="highlight-cyan">Phase 3 (M-5 Titan Pinnacle):</strong> 3,000g flagship envelope (>40,000m). Near-space operations validating vacuum Cold-Gas RCS stabilization and full-profile RTLS reentry.</li>
+            </ul>
 
+            <div class="btn-group lift-element delay-3">
+                <a href="#hero" class="btn btn-scroll">↑ Back to Top</a>
+                <a href="joanus.html" class="btn btn-page">Projekt JOANUS Pipeline</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Navbar styling on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for the subtle "Lift" ease-in effect
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.lift-element').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
 </body>
 </html>
