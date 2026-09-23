@@ -4,126 +4,153 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="ASTREA Solo Space Program - independent aerospace technology and astrophysics research.">
-  <title>ASTREA SSP - Independent Aerospace Research</title>
-  <link rel="stylesheet" href="assets/site.css">
+  <title>ASTREA SSP - Solo Space Program</title>
+  <link rel="stylesheet" href="assets+site.css">
   <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body data-page="index">
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="ASTREA SSP home">
-      <img class="brand-logo" src="logo.png" alt="ASTREA SSP logo"><span>ASTREA SSP</span>
-    </a>
-    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" data-i18n="menu">MENU</button>
-    <nav class="nav">
-      <a class="active" href="index.html" data-i18n="nav_overview">Overview</a>
-      <a href="projects.html" data-i18n="nav_projects">Projects</a>
-      <a href="https://discord.gg/NRd868Dkj2" target="_blank" rel="noreferrer" data-i18n="nav_discord">Discord ↗</a>
-      <a href="about.html" data-i18n="nav_about">About</a>
-      <a class="nav-github" href="https://github.com/ASTREA-SSP" target="_blank" rel="noreferrer" data-i18n="nav_github">GitHub ↗</a>
-    </nav>
-  </header>
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="ASTREA SSP home">
+    <img class="brand-logo" src="logo.png" alt="ASTREA SSP logo">
+    <span>ASTREA SSP</span>
+  </a>
+  <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" data-i18n="menu">MENU</button>
+  <nav class="nav">
+    <a class="active" href="index.html" data-i18n="nav_overview">Overview</a>
+    <a href="projects.html" data-i18n="nav_projects">Systems</a>
+    <a href="about.html" data-i18n="nav_about">The Program</a>
+    <a href="https://discord.gg/NRd868Dkj2" target="_blank" rel="noreferrer" data-i18n="nav_discord">Discord ↗</a>
+    <a class="nav-github" href="https://github.com/ASTREA-SSP" target="_blank" rel="noreferrer" data-i18n="nav_github">GitHub ↗</a>
+  </nav>
+</header>
 
-  <main>
-    <section class="hero reveal">
-      <div class="hero-grid"></div>
-      <div class="hero-copy">
-        <p class="eyebrow" data-i18n="hero_eyebrow">ASTREA SOLO SPACE PROGRAM / GERMANY</p>
-        <h1 data-i18n="hero_title">Engineering systems<br>for the edge of flight.</h1>
-        <p class="hero-lead" data-i18n="hero_lead">Independent aerospace technology and astrophysics research across autonomous flight systems, avionics, guidance and scientific data processing.</p>
-        <div class="hero-actions">
-          <a class="button button-light" href="projects.html" data-i18n="explore">Explore projects <span>→</span></a>
-          <a class="text-link" href="https://github.com/ASTREA-SSP" target="_blank" rel="noreferrer" data-i18n="source">View source on GitHub ↗</a>
+<main>
+  <section class="hero hero--dense reveal">
+    <div class="hero-grid"></div>
+    <div class="hero-copy">
+      <p class="eyebrow" data-i18n="hero_eyebrow">ASTREA SOLO SPACE PROGRAM / GERMANY</p>
+      <h1 data-i18n="hero_title">Engineering systems<br>for the edge of flight.</h1>
+      <p class="hero-lead" data-i18n="hero_lead">ASTREA is a solo space program focused on building, testing and documenting aerospace systems and astrophysics software.</p>
+      <div class="hero-actions">
+        <a class="button button-light" href="projects.html" data-i18n="explore">Explore systems <span>→</span></a>
+        <a class="text-link" href="about.html" data-i18n="program_link">Enter the program ↗</a>
+      </div>
+    </div>
+    <div class="hero-stage" aria-label="ESP32 flight computer visual">
+      <div class="esp32-cutout" aria-hidden="true">
+        <div class="esp32-board">
+          <div class="esp32-module"></div>
+          <div class="esp32-pins"><span></span><span></span></div>
+          <div class="esp32-label">ICARUS-RLV // OBC</div>
         </div>
       </div>
-      <div class="hero-stage" aria-label="ESP32 flight computer visual">
-        <div class="esp32-cutout" aria-hidden="true"><div class="esp32-board"><div class="esp32-module"></div><div class="esp32-pins"><span></span><span></span></div><div class="esp32-label">ICARUS-RLV // OBC</div></div></div>
-        <div class="stage-caption"><span><strong>ESP32</strong> / FLIGHT COMPUTER</span><span>ICARUS-RLV / AVIONICS</span></div>
+      <div class="stage-caption">
+        <span><strong>ESP32</strong> / FLIGHT COMPUTER</span>
+        <span>ICARUS-RLV / AVIONICS</span>
       </div>
-      <div class="hero-meta">
-        <span>ASTREA / 01</span>
-        <span data-i18n="status">STATUS: ACTIVE DEVELOPMENT</span>
-      </div>
-      <div class="hero-graphic" aria-hidden="true">
-        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
-        <div class="vehicle-silhouette"></div>
-        <span class="callout c1">GNC</span><span class="callout c2">RCS</span><span class="callout c3">RLV</span>
-      </div>
-    </section>
+    </div>
+    <div class="hero-meta">
+      <span>ASTREA / SSP</span>
+      <span data-i18n="status">STATUS: ACTIVE DEVELOPMENT</span>
+    </div>
+  </section>
 
-    <section class="section intro">
-      <div class="section-label" data-i18n="program">01 / PROGRAM</div>
-      <div class="intro-copy">
-        <h2 data-i18n="intro_title">Two disciplines.<br>One engineering approach.</h2>
-        <p data-i18n="intro_copy">ASTREA combines physical flight hardware with scientific computation. The program currently spans the ICARUS-RLV autonomous reentry testbed and JOANUS, an exoplanet detection and validation pipeline.</p>
-      </div>
-    </section>
+  <section class="section intro">
+    <div class="section-label" data-i18n="program">01 / PROGRAM</div>
+    <div class="intro-copy">
+      <h2 data-i18n="intro_title">One program.<br>Two technical domains.</h2>
+      <p data-i18n="intro_copy">ASTREA Solo Space Program brings physical flight hardware and scientific computation together under one long-term development effort. ICARUS-RLV addresses autonomous flight systems. JOANUS addresses computational astrophysics and exoplanet detection.</p>
+    </div>
+  </section>
 
-    <section class="project-feature dark">
-      <div class="project-image ic">
-        <div class="technical-lines"></div>
-        <span class="image-caption" data-i18n="ic_caption">ICARUS-RLV / CONCEPT</span>
-      </div>
-      <div class="project-info">
-        <p class="eyebrow" data-i18n="flight_systems">01 - FLIGHT SYSTEMS</p>
-        <h2>ICARUS-RLV</h2>
-        <p data-i18n="ic_desc">Autonomous stratospheric reentry vehicle hardware testbed for guidance, navigation, control and recovery.</p>
-        <dl class="spec-list">
-          <div><dt data-i18n="compute">COMPUTE</dt><dd>ESP32 / C++ / FreeRTOS</dd></div>
-          <div><dt data-i18n="control">CONTROL</dt><dd>RCS / Grid Fins / PID</dd></div>
-          <div><dt data-i18n="recovery">RECOVERY</dt><dd>RTLS / Parachute</dd></div>
-        </dl>
-        <a class="arrow-link" href="projects/icarus.html" data-i18n="project_details">Project details <span>↗</span></a>
-      </div>
-    </section>
+  <section class="program-banner">
+    <div>
+      <p class="eyebrow" data-i18n="identity_kicker">ASTREA SOLO SPACE PROGRAM</p>
+      <h2 data-i18n="identity_title">Build it. Test it.<br>Understand it.</h2>
+    </div>
+    <p data-i18n="identity_copy">A single-person engineering program built around real systems, measurable experiments, software and iteration. The work is public because the development itself is part of the project.</p>
+  </section>
 
-    <section class="project-feature jo">
-      <div class="project-info">
-        <p class="eyebrow" data-i18n="astrophysics">02 - ASTROPHYSICS</p>
-        <h2>JOANUS</h2>
-        <p data-i18n="jo_desc">A headless exoplanet discovery and validation pipeline built around relative photometry, BLS period searches and automated false-positive checks.</p>
-        <dl class="spec-list">
-          <div><dt data-i18n="data">DATA</dt><dd>NASA / TESS / Kepler</dd></div>
-          <div><dt data-i18n="method">METHOD</dt><dd>BLS / Signal Processing</dd></div>
-          <div><dt data-i18n="output">OUTPUT</dt><dd>Candidate telemetry / JSON</dd></div>
-        </dl>
-        <a class="arrow-link" href="projects/joanus.html">Project details <span>↗</span></a>
-      </div>
-      <div class="project-image jo-img">
-        <div class="star-field"></div>
-        <div class="light-curve"></div>
-        <span class="image-caption" data-i18n="jo_caption">JOANUS / SIGNAL ANALYSIS</span>
-      </div>
-    </section>
+  <section class="project-feature dark">
+    <div class="project-image ic">
+      <div class="technical-lines"></div>
+      <span class="image-caption" data-i18n="ic_caption">ICARUS-RLV / CONCEPT</span>
+    </div>
+    <div class="project-info">
+      <p class="eyebrow" data-i18n="flight_systems">01 - FLIGHT SYSTEMS</p>
+      <h2>ICARUS-RLV</h2>
+      <p data-i18n="ic_desc">Autonomous stratospheric reentry vehicle hardware testbed for guidance, navigation, control and recovery.</p>
+      <dl class="spec-list">
+        <div><dt data-i18n="compute">COMPUTE</dt><dd>ESP32 / C++ / FreeRTOS</dd></div>
+        <div><dt data-i18n="control">CONTROL</dt><dd>RCS / Grid Fins / PID</dd></div>
+        <div><dt data-i18n="recovery">RECOVERY</dt><dd>RTLS / Parachute</dd></div>
+      </dl>
+      <a class="arrow-link" href="projects/icarus.html" data-i18n="project_details">System details <span>↗</span></a>
+    </div>
+  </section>
 
-    <section class="section roadmap">
-      <div class="section-label" data-i18n="roadmap">02 / ROADMAP</div>
-      <div class="roadmap-main">
-        <h2 data-i18n="roadmap_title">From bench testing<br>to near-space flight.</h2>
-        <div class="timeline">
-          <article class="phase current"><span data-i18n="phase0">PHASE 0</span><h3 data-i18n="arch">Architecture & Bench</h3><p data-i18n="phase0copy">Flight software, sensor fusion, hardware interrupts and pipeline modularization.</p></article>
-          <article><span data-i18n="phase1">PHASE 1</span><h3 data-i18n="drops">Local Drop Tests</h3><p data-i18n="phase1copy">Controlled 1,000 m drops to validate flight state machines, grid fins and recovery.</p></article>
-          <article><span data-i18n="phase2">PHASE 2</span><h3 data-i18n="strato">Stratospheric Mission</h3><p data-i18n="phase2copy">Up to approximately 35 km with the full science payload.</p></article>
-          <article><span data-i18n="phase3">PHASE 3</span><h3 data-i18n="pinnacle">High-Altitude Pinnacle</h3><p data-i18n="phase3copy">Targeting approximately 40 km and ultra-thin atmospheric conditions.</p></article>
-        </div>
+  <section class="project-feature jo">
+    <div class="project-info">
+      <p class="eyebrow" data-i18n="astrophysics">02 - ASTROPHYSICS</p>
+      <h2>JOANUS</h2>
+      <p data-i18n="jo_desc">A headless exoplanet discovery and validation pipeline built around relative photometry, BLS period searches and automated false-positive checks.</p>
+      <dl class="spec-list">
+        <div><dt data-i18n="data">DATA</dt><dd>NASA / TESS / Kepler</dd></div>
+        <div><dt data-i18n="method">METHOD</dt><dd>BLS / Signal Processing</dd></div>
+        <div><dt data-i18n="output">OUTPUT</dt><dd>Candidate telemetry / JSON</dd></div>
+      </dl>
+      <a class="arrow-link" href="projects/joanus.html" data-i18n="project_details">System details <span>↗</span></a>
+    </div>
+    <div class="project-image jo-img">
+      <div class="star-field"></div>
+      <div class="light-curve"></div>
+      <span class="image-caption" data-i18n="jo_caption">JOANUS / SIGNAL ANALYSIS</span>
+    </div>
+  </section>
+
+  <section class="section roadmap">
+    <div class="section-label" data-i18n="roadmap">02 / ROADMAP</div>
+    <div class="roadmap-main">
+      <h2 data-i18n="roadmap_title">From bench testing<br>to near-space flight.</h2>
+      <div class="timeline">
+        <article class="current"><span data-i18n="phase0">PHASE 0 / CURRENT</span><h3 data-i18n="arch">Architecture & Bench</h3><p data-i18n="phase0copy">Flight software, sensor fusion, hardware interrupts and pipeline modularization.</p></article>
+        <article><span data-i18n="phase1">PHASE 1 / PLANNED</span><h3 data-i18n="drops">Local Drop Tests</h3><p data-i18n="phase1copy">Controlled 1,000 m drops to validate flight state machines, grid fins and recovery.</p></article>
+        <article><span data-i18n="phase2">PHASE 2 / PLANNED</span><h3 data-i18n="strato">Stratospheric Mission</h3><p data-i18n="phase2copy">Targeting up to approximately 35 km with the full science payload.</p></article>
+        <article><span data-i18n="phase3">PHASE 3 / LONG TERM</span><h3 data-i18n="pinnacle">High-Altitude Pinnacle</h3><p data-i18n="phase3copy">Targeting approximately 40 km and ultra-thin atmospheric conditions.</p></article>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="mission-reason reveal">
-      <div><div class="reason-kicker" data-i18n="why">WHY ASTREA EXISTS</div><h2 data-i18n="portfolio">A portfolio with a purpose.</h2></div>
-      <div class="reason-copy"><p data-i18n="whycopy">ASTREA started as a way to build something real, document the engineering journey, and create a serious portfolio for the educational path that could eventually lead toward an application to the European Space Agency.</p><p><em data-i18n="cool">And, honestly: because building rockets and hunting exoplanets is fucking cool. XD</em></p></div>
-    </section>
-    <section class="discord-strip reveal"><div><div class="reason-kicker" data-i18n="public">THE BUILD IS PUBLIC</div><h3 data-i18n="discord_cta">Follow the project on Discord.</h3></div><a class="button button-dark" href="https://discord.gg/NRd868Dkj2" target="_blank" rel="noreferrer" data-i18n="join_discord">Join Discord ↗</a></section>
-    <section class="statement">
-      <p class="eyebrow">ASTREA SSP</p>
-      <h2 data-i18n="statement">Build. Measure. Verify.</h2>
-      <a class="button button-dark" href="about.html" data-i18n="about_program">About the program <span>→</span></a>
-    </section>
-  </main>
+  <section class="mission-reason reveal">
+    <div>
+      <div class="reason-kicker" data-i18n="why">WHY ASTREA EXISTS</div>
+      <h2 data-i18n="why_title">A solo program<br>with a long horizon.</h2>
+    </div>
+    <div class="reason-copy">
+      <p data-i18n="whycopy">ASTREA started as a way to build something real, document the engineering journey and create a body of serious technical work for the next stages of my education. The long-term direction is aerospace engineering and, eventually, the possibility of applying to the European Space Agency.</p>
+      <p><em data-i18n="cool">And, honestly: because building rockets and hunting exoplanets is fucking cool. XD</em></p>
+    </div>
+  </section>
 
-  <footer class="footer">
-    <span>© 2026 ASTREA SOLO SPACE PROGRAM</span>
-    <div><a href="projects.html" data-i18n="nav_projects">Projects</a><a href="about.html" data-i18n="nav_about">About</a><a href="https://github.com/ASTREA-SSP" target="_blank" rel="noreferrer">GitHub ↗</a></div>
-  </footer>
-  <script src="assets/site.js"></script>
+  <section class="discord-strip reveal">
+    <div>
+      <div class="reason-kicker" data-i18n="public">THE BUILD IS PUBLIC</div>
+      <h3 data-i18n="discord_cta">Follow ASTREA on Discord.</h3>
+    </div>
+    <a class="button button-dark" href="https://discord.gg/NRd868Dkj2" target="_blank" rel="noreferrer" data-i18n="join_discord">Join Discord ↗</a>
+  </section>
+
+  <section class="statement">
+    <p class="eyebrow">ASTREA SSP</p>
+    <h2 data-i18n="statement">Build. Measure. Verify.</h2>
+    <a class="button button-dark" href="about.html" data-i18n="about_program">About the program <span>→</span></a>
+  </section>
+</main>
+
+<footer class="footer">
+  <span data-i18n="copyright">© 2026 ASTREA SOLO SPACE PROGRAM</span>
+  <div><a href="projects.html" data-i18n="nav_projects">Systems</a><a href="about.html" data-i18n="nav_about">The Program</a><a href="https://github.com/ASTREA-SSP" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+</footer>
+<script src="assets+site.js"></script>
 </body>
 </html>
