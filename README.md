@@ -25,3 +25,6 @@ If the browser prefers German (`de`, `de-DE`, etc.), the site sets the document 
 - Discord: https://discord.gg/NRd868Dkj2
 
 The homepage uses a local HTML/CSS ESP32 technical cutout rather than an external image, keeping the package fast and self-contained.
+
+## Favicon
+Place your `favicon.png` in the repository root (`./favicon.png`). Every page references it with the correct relative path.
