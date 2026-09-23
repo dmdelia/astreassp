@@ -9,13 +9,13 @@ Fast static site for ASTREA Solo Space Program.
 - No framework, build chain or external JS dependency
 
 ## Structure
-- `index.html` — homepage
-- `projects.html` — project index
-- `projects/icarus.html` — ICARUS-RLV detail page
-- `projects/joanus.html` — JOANUS detail page
-- `about.html` — program / motivation
-- `assets/site.css` — global styles
-- `assets/site.js` — navigation, language detection and reveal effects
+- `index.html` - homepage
+- `projects.html` - project index
+- `projects/icarus.html` - ICARUS-RLV detail page
+- `projects/joanus.html` - JOANUS detail page
+- `about.html` - program / motivation
+- `assets/site.css` - global styles
+- `assets/site.js` - navigation, language detection and reveal effects
 
 ## Language
 If the browser prefers German (`de`, `de-DE`, etc.), the site sets the document language to German and translates the shared navigation / key UI labels. English is the fallback.
