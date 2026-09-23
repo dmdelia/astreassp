@@ -28,3 +28,5 @@ The homepage uses a local HTML/CSS ESP32 technical cutout rather than an externa
 
 ## Favicon
 Place your `favicon.png` in the repository root (`./favicon.png`). Every page references it with the correct relative path.
+
+- `logo.png` - header logo used across all pages
